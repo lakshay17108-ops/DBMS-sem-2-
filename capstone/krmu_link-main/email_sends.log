@@ -1,0 +1,21 @@
+{"timestamp": "2026-06-05T17:22:34.846291Z", "ticket_id": "LOGTEST1", "target": "electrician_new@uni.edu", "status": "sent", "detail": {"message": "OK"}}
+{"timestamp": "2026-06-05T17:28:44.935245Z", "ticket_id": "SENDERTEST", "target": "lakshay01008@gmail.com", "status": "sent", "detail": {"message": "OK"}}
+{"timestamp": "2026-06-05T17:29:10.401524Z", "ticket_id": "VERIFY1", "target": "general_maintenance@university.edu", "status": "sent", "detail": {"message": "OK"}}
+{"timestamp": "2026-06-05T17:30:50.870131Z", "ticket_id": "CL1780680649427", "target": "lakshay01008@gmail.com", "status": "sent", "detail": {"message": "OK"}}
+{"timestamp": "2026-06-05T17:31:01.016476Z", "ticket_id": "CL1780680649427", "target": "lakshay01008@gmail.com", "status": "sent", "detail": {"message": "OK"}}
+{"timestamp": "2026-07-05T05:36:28.339036Z", "ticket_id": "CL1783229786658", "target": "lakshay17108@gmail.com", "status": "sent", "detail": {"message": "OK"}}
+{"timestamp": "2026-07-05T05:41:48.996848Z", "ticket_id": "CL1783230107375", "target": "2501730367@krmu.edu.in", "status": "sent", "detail": {"message": "OK"}}
+{"timestamp": "2026-07-05T05:43:08.218423Z", "ticket_id": "CL1783230107375", "target": "2501730367@krmu.edu.in", "status": "sent", "detail": {"message": "OK"}}
+{"timestamp": "2026-07-05T05:52:10.527425Z", "ticket_id": "CL1783230729509", "target": "2501730367@krmu.edu.in", "status": "sent", "detail": {"message": "OK"}}
+{"timestamp": "2026-07-05T05:52:24.410696Z", "ticket_id": "CL1783230729509", "target": "2501730367@krmu.edu.in", "status": "sent", "detail": {"message": "OK"}}
+{"timestamp": "2026-07-05T05:53:02.901709Z", "ticket_id": "CL1783230729509", "target": "lakshay17108@gmail.com", "status": "sent", "detail": {"message": "OK"}}
+{"timestamp": "2026-07-05T05:53:40.755113Z", "ticket_id": "CL1783230819505", "target": "lakshay17108@gmail.com", "status": "sent", "detail": {"message": "OK"}}
+{"timestamp": "2026-07-05T05:53:51.814506Z", "ticket_id": "CL1783230819505", "target": "lakshay17108@gmail.com", "status": "sent", "detail": {"message": "OK"}}
+{"timestamp": "2026-07-05T05:55:29.605501Z", "ticket_id": "CL1783230928075", "target": "lakshay01008@gmail.com", "status": "sent", "detail": {"message": "OK"}}
+{"timestamp": "2026-07-05T05:55:45.174487Z", "ticket_id": "CL1783230928075", "target": "lakshay01008@gmail.com", "status": "sent", "detail": {"message": "OK"}}
+{"timestamp": "2026-07-05T05:56:58.374884Z", "ticket_id": "CL1783231017440", "target": "lakshay01008@gmail.com", "status": "sent", "detail": {"message": "OK"}}
+{"timestamp": "2026-07-05T05:57:19.698648Z", "ticket_id": "CL1783231017440", "target": "lakshay01008@gmail.com", "status": "sent", "detail": {"message": "OK"}}
+{"timestamp": "2026-07-05T09:07:47.494486Z", "ticket_id": "CL1783242466084", "target": "lakshay01008@gmail.com", "status": "sent", "detail": {"message": "OK"}}
+{"timestamp": "2026-07-05T09:19:24.818747Z", "ticket_id": "CL1783243163300", "target": "lakshay17108@gmail.com", "status": "sent", "detail": {"message": "OK"}}
+{"timestamp": "2026-07-08T05:28:29.288403Z", "ticket_id": "CL1783243163300", "target": "lakshay17108@gmail.com", "status": "aborted", "detail": {"reason": "BREVO_API_KEY not set"}}
+{"timestamp": "2026-11-19T03:47:35.056938Z", "ticket_id": "CL1795060051581", "target": "lakshay01008@gmail.com", "status": "error", "detail": {"exception": "(401)\nReason: Unauthorized\nHTTP response headers: HTTPHeaderDict({'Date': 'Thu, 19 Nov 2026 03:47:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '59', 'Connection': 'keep-alive', 'access-control-allow-credentials': 'true', 'sib-request-id': '1b232c9d-a790-9195-9aa5-999168d7c8e0', 'access-control-allow-origin': '*', 'access-control-allow-headers': '*', 'access-control-allow-methods': 'PUT, POST, GET, DELETE, PATCH, OPTIONS', 'x-envoy-upstream-service-time': '7', 'server': 'cloudflare', 'cf-cache-status': 'DYNAMIC', 'Cf-Apo-Via': 'origin,noget', 'CF-RAY': 'a5cc3bf8ecb60494-CDG'})\nHTTP response body: {\"message\":\"API Key is not enabled\",\"code\":\"unauthorized\"}\n\n", "body": "{\"message\":\"API Key is not enabled\",\"code\":\"unauthorized\"}\n"}}

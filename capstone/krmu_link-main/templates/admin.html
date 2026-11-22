@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>CampusLink | Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body>
+    <!-- Auth overlay: visible by default, hidden by JS after session check -->
+    <div id="authOverlay" class="auth-overlay">
+        <div class="auth-card">
+            <h3>Admin Access Required</h3>
+            <p>Enter the admin password to view tickets and manage statuses.</p>
+            <input id="adminPasswordInput" type="password" placeholder="Admin password">
+            <button id="adminLoginBtn" type="button">Unlock Dashboard</button>
+            <p id="authMessage" class="auth-message"></p>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+        <header>
+            <div class="header-left">
+                <h1>CampusLink Admin Dashboard</h1>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button id="refreshBtn">Refresh Data</button>
+                <button id="logoutBtn" class="logout-btn" type="button" title="Logout">🔒 Logout</button>
+                <button id="themeToggleBtn" class="theme-toggle-btn" type="button" aria-label="Toggle light and dark mode" title="Toggle Theme">
+                    <span id="themeIcon">☀️</span>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section class="admin-section">
+                <div class="tickets-header">
+                    <h2>Tickets</h2>
+                    <div class="sort-controls">
+                        <label for="sortSelect">Sort by</label>
+                        <select id="sortSelect">
+                            <option value="newest">Newest</option>
+                            <option value="category">Category</option>
+                            <option value="date">Date</option>
+                            <option value="priority">Urgency</option>
+                        </select>
+                        <button id="sortToggleBtn" type="button" class="toggle-btn">Descending ↓</button>
+                    </div>
+                </div>
+                <table id="ticketsTable">
+                    <thead>
+                        <tr>
+                            <th>Ticket ID</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Priority</th>
+                            <th>Location</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ticketsBody"></tbody>
+                </table>
+            </section>
+
+            <section class="admin-section">
+                <h2>Technician Management</h2>
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <form id="techForm" class="tech-form" onsubmit="event.preventDefault(); saveTech();">
+                            <label for="techCategory">Category</label>
+                            <input id="techCategory" type="text" placeholder="Category" />
+                            <label for="techEmail">Technician Email</label>
+                            <input id="techEmail" type="email" placeholder="Technician email" />
+                            <div class="action-group">
+                                <button id="saveTechBtn" type="button">Save Technician</button>
+                                <button id="cancelTechBtn" type="button">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tech-card">
+                        <table id="techsTable">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Email</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="techsBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <div id="detailModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <h2>Ticket Inspection: <span id="modalTicketId"></span></h2>
+            
+            <div class="detail-grid">
+                <div class="detail-info">
+                    <p><strong>Name:</strong> <span id="mName"></span></p>
+                    <p><strong>Email:</strong> <span id="mEmail"></span></p>
+                    <p><strong>Phone:</strong> <span id="mPhone"></span></p>
+                    <p><strong>Category:</strong> <span id="mCategory"></span></p>
+                    <p><strong>Priority:</strong> <span id="mPriority"></span></p>
+                    <p><strong>Location:</strong> <span id="mLocation"></span></p>
+                    <p><strong>Floor:</strong> <span id="mFloor"></span></p>
+                    <p><strong>Room:</strong> <span id="mRoom"></span></p>
+                    <p><strong>Date:</strong> <span id="mDate"></span></p>
+                    <p><strong>Description:</strong></p>
+                    <p id="mDescription" class="desc-box"></p>
+                    
+                    <div class="status-control">
+                        <label for="statusSelect">Update Status:</label>
+                        <select id="statusSelect">
+                            <option value="Awaiting Approval">Awaiting Approval</option>
+                            <option value="Approved">Approved</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
+                        <button id="saveStatusBtn">Update</button>
+                    </div>
+                    
+                    <button id="deleteTicketBtn" class="danger-btn hidden">Delete Ticket</button>
+                </div>
+                <div class="detail-media">
+                    <p><strong>Evidence Image:</strong></p>
+                    <img id="mImage" src="" alt="No Image Provided" class="evidence-img">
+                    <p><strong>QR Code:</strong></p>
+                    <img id="mQrCode" src="" alt="QR" class="qr-img">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>by team heredity</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/admin.js', v='20260708e') }}"></script>
+    <script src="{{ url_for('static', filename='js/admin_techs.js', v='20260708e') }}"></script>
+</body>
+</html>

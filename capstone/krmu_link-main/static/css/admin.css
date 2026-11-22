@@ -1,0 +1,587 @@
+/* ── Dark theme (default) ── */
+:root,
+:root[data-theme='dark'] {
+    --bg-page:      #090c14;
+    --panel:        rgba(18, 24, 42, 0.75);
+    --panel-strong: rgba(15, 21, 37, 0.88);
+    --panel-border: rgba(255, 255, 255, 0.08);
+    --text-bright:  #e7eefc;
+    --text-muted:   #9aa3b8;
+    --accent-blue:  #8b5cf6;
+    --accent-cyan:  #22d3ee;
+    --danger-red:   #fb7185;
+    --shadow:       0 32px 80px rgba(0, 0, 0, 0.35);
+    --input-bg:     #1a2240;
+    --input-border: rgba(255, 255, 255, 0.14);
+    --select-bg:    #1a2240;
+    --select-text:  #e7eefc;
+    --select-border:rgba(255, 255, 255, 0.18);
+    --table-bg:     rgba(10, 14, 28, 0.85);
+    --table-row-border: rgba(255, 255, 255, 0.06);
+    --table-head-bg:rgba(255, 255, 255, 0.04);
+    --modal-bg:     rgba(16, 22, 38, 0.98);
+    --modal-border: rgba(255, 255, 255, 0.1);
+    --tech-card-bg: rgba(14, 20, 34, 0.92);
+    --footer:       #8b95ae;
+    --btn-bg:       rgba(255, 255, 255, 0.1);
+    --btn-border:   rgba(255, 255, 255, 0.12);
+    --btn-hover-bg: rgba(139, 92, 246, 0.15);
+    --btn-hover-border: rgba(139, 92, 246, 0.28);
+    --desc-box-bg:  rgba(255, 255, 255, 0.05);
+    --sort-bg:      rgba(255, 255, 255, 0.08);
+    --sort-border:  rgba(255, 255, 255, 0.12);
+    --toggle-bg:    rgba(255, 255, 255, 0.1);
+    --toggle-border:rgba(255, 255, 255, 0.18);
+    --toggle-icon:  '☀️';
+}
+
+/* ── Light theme ── */
+:root[data-theme='light'] {
+    --bg-page:      #eef2ff;
+    --panel:        rgba(255, 255, 255, 0.78);
+    --panel-strong: rgba(255, 255, 255, 0.92);
+    --panel-border: rgba(148, 163, 184, 0.28);
+    --text-bright:  #1e293b;
+    --text-muted:   #475569;
+    --accent-blue:  #7c3aed;
+    --accent-cyan:  #0891b2;
+    --danger-red:   #e11d48;
+    --shadow:       0 32px 80px rgba(15, 23, 42, 0.12);
+    --input-bg:     #ffffff;
+    --input-border: rgba(148, 163, 184, 0.4);
+    --select-bg:    #ffffff;
+    --select-text:  #1e293b;
+    --select-border:rgba(148, 163, 184, 0.45);
+    --table-bg:     rgba(255, 255, 255, 0.9);
+    --table-row-border: rgba(148, 163, 184, 0.18);
+    --table-head-bg:rgba(241, 245, 249, 0.95);
+    --modal-bg:     rgba(255, 255, 255, 0.98);
+    --modal-border: rgba(148, 163, 184, 0.28);
+    --tech-card-bg: rgba(248, 250, 252, 0.96);
+    --footer:       #64748b;
+    --btn-bg:       rgba(124, 58, 237, 0.08);
+    --btn-border:   rgba(124, 58, 237, 0.2);
+    --btn-hover-bg: rgba(124, 58, 237, 0.16);
+    --btn-hover-border: rgba(124, 58, 237, 0.4);
+    --desc-box-bg:  rgba(241, 245, 249, 0.9);
+    --sort-bg:      rgba(255, 255, 255, 0.8);
+    --sort-border:  rgba(148, 163, 184, 0.35);
+    --toggle-bg:    rgba(255, 255, 255, 0.85);
+    --toggle-border:rgba(148, 163, 184, 0.4);
+}
+
+body {
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    background: radial-gradient(circle at top left, rgba(139, 92, 246, 0.16), transparent 20%),
+                radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.12), transparent 18%),
+                var(--bg-page);
+    color: var(--text-bright);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.auth-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.86);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1100;
+}
+
+.auth-overlay.hidden {
+    display: none;
+}
+
+.auth-card {
+    width: min(100%, 400px);
+    background: rgba(16, 22, 38, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+}
+
+.auth-card h3 {
+    margin: 0 0 8px 0;
+}
+
+.auth-card p {
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.auth-card input {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 12px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid var(--input-border);
+    background: var(--input-bg);
+    color: var(--text-bright);
+}
+
+.auth-card button {
+    width: 100%;
+    margin-top: 12px;
+}
+
+.auth-message {
+    min-height: 1.25rem;
+    margin-top: 10px;
+    color: var(--danger-red);
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.14), transparent 18%),
+                radial-gradient(circle at 80% 15%, rgba(34, 211, 238, 0.1), transparent 16%);
+    pointer-events: none;
+    z-index: -1;
+    transition: background 0.3s ease;
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+    flex: 1;
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 32px;
+    backdrop-filter: blur(22px);
+    box-shadow: var(--shadow);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--panel-border);
+    padding-bottom: 24px;
+    margin-bottom: 28px;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+header h1 {
+    color: var(--text-bright);
+    margin: 0;
+    font-size: 1.95rem;
+    letter-spacing: 0.02em;
+}
+
+/* ── Theme Toggle ── */
+.theme-toggle-btn {
+    background: var(--toggle-bg);
+    border: 1px solid var(--toggle-border);
+    color: var(--text-bright);
+    width: 48px;
+    height: 48px;
+    border-radius: 18px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    font-size: 1.3rem;
+    transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.theme-toggle-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 12px 32px rgba(139, 92, 246, 0.22);
+    background: var(--btn-hover-bg);
+}
+
+.admin-section {
+    margin-bottom: 24px;
+}
+
+.tickets-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.sort-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.sort-controls label {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.sort-controls select,
+.sort-controls .toggle-btn {
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid var(--sort-border);
+    background: var(--sort-bg);
+    color: var(--text-bright);
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.sort-controls .toggle-btn {
+    cursor: pointer;
+    font-weight: 700;
+}
+
+button {
+    background: var(--btn-bg);
+    color: var(--text-bright);
+    border: 1px solid var(--btn-border);
+    padding: 12px 22px;
+    border-radius: 16px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    background: var(--btn-hover-bg);
+    border-color: var(--btn-hover-border);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--table-bg);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    transition: background 0.3s ease;
+}
+
+th, td {
+    padding: 18px 16px;
+    text-align: center;
+    border-bottom: 1px solid var(--table-row-border);
+}
+
+th {
+    background: var(--table-head-bg);
+    color: var(--accent-cyan);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+}
+
+td {
+    color: var(--text-muted);
+}
+
+.view-btn {
+    background: transparent;
+    border: 1px solid rgba(139, 92, 246, 0.56);
+    color: var(--accent-cyan);
+    padding: 8px 14px;
+    border-radius: 999px;
+}
+
+.view-btn:hover {
+    background: rgba(34, 211, 238, 0.12);
+    color: var(--text-bright);
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    z-index: 1000;
+    pointer-events: auto;
+    transform: none;
+}
+
+.modal-content {
+    background: var(--modal-bg);
+    padding: 28px;
+    border-radius: 28px;
+    width: min(100%, 940px);
+    max-width: 940px;
+    position: relative;
+    max-height: min(92vh, 900px);
+    overflow-y: auto;
+    border: 1px solid var(--modal-border);
+    backdrop-filter: blur(18px);
+    box-sizing: border-box;
+    margin: auto;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.close-btn {
+    position: absolute;
+    top: 18px; right: 22px;
+    font-size: 26px;
+    cursor: pointer;
+    color: var(--text-bright);
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 22px;
+}
+
+.detail-info p {
+    margin: 10px 0;
+    line-height: 1.7;
+    color: var(--text-muted);
+}
+
+@media(min-width: 800px) {
+    .detail-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.desc-box {
+    background: var(--desc-box-bg);
+    padding: 14px;
+    border-radius: 16px;
+    min-height: 100px;
+    border: 1px solid var(--table-row-border);
+    color: var(--text-muted);
+    transition: background 0.3s ease;
+}
+
+.status-control {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--panel-border);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.status-control label {
+    flex: 0 0 auto;
+    color: var(--text-bright);
+    font-weight: 600;
+}
+
+/* ── Select / Dropdown fix – always use solid backgrounds so options are readable ── */
+select {
+    padding: 10px 14px;
+    background: var(--select-bg);
+    color: var(--select-text);
+    border: 1px solid var(--select-border);
+    border-radius: 14px;
+    flex: 1 1 220px;
+    min-width: 220px;
+    max-width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239aa3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+}
+
+select option {
+    background: var(--select-bg);
+    color: var(--select-text);
+    padding: 8px 12px;
+}
+
+select:focus {
+    border-color: var(--accent-blue);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.18);
+}
+
+.danger-btn {
+    background-color: var(--danger-red);
+    color: white;
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(251, 113, 133, 0.18);
+}
+
+.danger-btn:hover {
+    background-color: #f43f5e;
+}
+
+/* Logout button */
+.logout-btn {
+    background: rgba(251, 113, 133, 0.12);
+    color: var(--danger-red);
+    border: 1px solid rgba(251, 113, 133, 0.3);
+    padding: 10px 18px;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.logout-btn:hover {
+    background: rgba(251, 113, 133, 0.22);
+    border-color: rgba(251, 113, 133, 0.55);
+    transform: translateY(-1px);
+}
+
+.evidence-img, .qr-img {
+    max-width: 100%;
+    width: 100%;
+    max-height: 260px;
+    object-fit: contain;
+    border-radius: 18px;
+    margin-bottom: 18px;
+    background: rgba(255, 255, 255, 0.08);
+    min-height: 120px;
+    display: block;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+}
+
+.tech-card {
+    background: var(--tech-card-bg);
+    padding: 24px;
+    border-radius: 28px;
+    box-shadow: 0 34px 80px rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--panel-border);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.tech-form {
+    display: grid;
+    gap: 16px;
+}
+
+.tech-form label {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.tech-form input {
+    padding: 14px 16px;
+    border-radius: 18px;
+    border: 1px solid var(--input-border);
+    background: var(--input-bg);
+    color: var(--text-bright);
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.tech-form input:focus {
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
+}
+
+.action-group {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+#techsTable {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 22px;
+    overflow: hidden;
+    background: var(--table-bg);
+    border: 1px solid var(--table-row-border);
+    transition: background 0.3s ease;
+}
+
+#techsTable th,
+#techsTable td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--table-row-border);
+    text-align: left;
+    color: var(--text-muted);
+}
+
+#techsTable th {
+    background: var(--table-head-bg);
+    color: var(--accent-cyan);
+}
+
+#techsTable button {
+    padding: 8px 12px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    background: var(--btn-bg);
+    color: var(--text-bright);
+    border: 1px solid var(--btn-border);
+}
+
+#techsTable button:hover {
+    background: rgba(34, 211, 238, 0.12);
+}
+
+@media(min-width: 900px) {
+    .tech-grid {
+        grid-template-columns: 380px 1fr;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: var(--footer);
+}

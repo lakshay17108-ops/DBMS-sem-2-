@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: campuslink
+    runtime: python
+    pythonVersion: 3.11
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    plan: standard
+    envVars:
+      - key: MYSQL_HOST
+        sync: false
+      - key: MYSQL_PORT
+        value: "3306"
+      - key: MYSQL_DATABASE
+        sync: false
+      - key: MYSQL_USER
+        sync: false
+      - key: MYSQL_PASSWORD
+        sync: false
+      - key: BREVO_API_KEY
+        sync: false
+      - key: EMAIL_SENDER
+        value: lucky17108w@gmail.com
+      - key: EMAIL_SENDER_NAME
+        value: CampusLink System
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: FLASK_SECRET_KEY
+        sync: false

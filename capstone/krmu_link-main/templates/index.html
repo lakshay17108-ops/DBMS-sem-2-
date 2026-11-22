@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusLink | Submit Ticket</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="page-wrap">
+        <div class="card">
+            <header class="card-header">
+                <div class="header-top">
+                    <div>
+                        <h1>CampusLink</h1>
+                        <p class="subtitle">Report maintenance issues instantly.</p>
+                    </div>
+                    <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle light and dark mode">
+                        <span class="toggle__icon">🌙</span>
+                    </button>
+                </div>
+            </header>
+
+            <form id="ticketForm" class="campus-form">
+                <section class="section info-section">
+                    <h3>Your Information</h3>
+                    <div class="field">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" placeholder="Enter your full name">
+                    </div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="your@email.com">
+                    </div>
+                    <div class="field">
+                        <label for="phone">Phone</label>
+                        <input type="text" id="phone" placeholder="+91 XXXXXX XXXXX">
+                    </div>
+                </section>
+
+                <section class="section location-section">
+                    <h3>Location details</h3>
+                    <div class="field">
+                        <label>Select Block</label>
+                        <div class="block-grid" role="radiogroup" aria-label="Select block">
+                            <button type="button" class="block-btn" data-block="A">Block A</button>
+                            <button type="button" class="block-btn" data-block="B">Block B</button>
+                            <button type="button" class="block-btn" data-block="C">Block C</button>
+                            <button type="button" class="block-btn" data-block="D">Block D</button>
+                        </div>
+                    </div>
+                    <div class="two-col">
+                        <div class="field">
+                            <label for="floorInput">Floor Number</label>
+                            <input type="text" id="floorInput" placeholder="e.g. 2">
+                        </div>
+                        <div class="field">
+                            <label for="roomInput">Room or Lab Number</label>
+                            <input type="text" id="roomInput" placeholder="e.g. 202 or Lab A1" required>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section issue-section">
+                    <h3>Issue Details</h3>
+                    <div class="two-col">
+                        <div class="field">
+                            <label for="category">Problem Category</label>
+                            <select id="category" required>
+                                <option value="" disabled selected>-- Select a Category --</option>
+                                <option value="Electrical">Electrical</option>
+                                <option value="Plumbing">Plumbing</option>
+                                <option value="Furniture">Furniture</option>
+                                <option value="IoT / Network">IoT / Network</option>
+                                <option value="HVAC">HVAC</option>
+                                <option value="General">General</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="priority">Priority Level</label>
+                            <select id="priority" required>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                                <option value="Urgent">Urgent</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="two-col">
+                        <div class="field">
+                            <label for="dateInput">Date of Issue</label>
+                            <input type="date" id="dateInput">
+                        </div>
+                        <div class="field">
+                            <label for="imageUpload">Upload Image (Optional)</label>
+                            <input type="file" id="imageUpload" accept="image/*">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="description">Description</label>
+                        <textarea id="description" rows="4" required placeholder="Describe the leak, broken light, etc..."></textarea>
+                    </div>
+                    <button type="submit" id="submitBtn" class="submit-btn">Submit Report</button>
+                </section>
+            </form>
+
+            <div id="receiptPanel" class="hidden card-receipt">
+                <h2>Ticket Submitted Successfully!</h2>
+                <p>Your Ticket ID: <strong id="displayTicketId"></strong></p>
+                <div class="qr-container">
+                    <img id="qrCodeImg" src="" alt="Ticket QR Code">
+                </div>
+                <button onclick="window.location.reload()" class="submit-btn alt">Submit Another</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>by team heredity</p>
+    </footer>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
